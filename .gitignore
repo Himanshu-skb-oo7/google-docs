@@ -1,0 +1,34 @@
+# Python/Django specific files and directories
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Django development files
+db.sqlite3
+media/
+static/
+.env
+
+# Virtual environment
+venv/
+env/
+*.env
+*.venv
+
+# Compiled Python files
+*.pyc
+*.pyo
+*.pyd
+
+# Log files
+*.log
+
+# macOS specific files
+.DS_Store
+
+# Editor and IDE specific files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
