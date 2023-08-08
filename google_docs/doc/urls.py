@@ -1,14 +1,7 @@
 from django.urls import path
+from .views import DocListView, DocDetailView
 
-
-from .views import DocViewSet
-from rest_framework.routers import DefaultRouter
-
-# urlpatterns = [
-#     path("<uuid:pk>/", DocView.as_view(), name="Doc details view"),
-# ]
-
-
-router = DefaultRouter()
-router.register(r'', DocViewSet, basename='doc')
-urlpatterns = router.urls
+urlpatterns = [
+    path('', DocListView.as_view(), name='doc-list'),
+    path('<uuid:pk>/', DocDetailView.as_view(), name='doc-detail'),
+]

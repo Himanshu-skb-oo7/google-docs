@@ -6,4 +6,5 @@ from django.db import models
 class Doc(models.Model):
     id = models.UUIDField(max_length=32, default=uuid.uuid4, primary_key=True)
     content = models.TextField()
+    title = models.CharField(max_length=120, null=False)
     

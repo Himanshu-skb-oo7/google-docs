@@ -1,14 +1,15 @@
-from django.contrib.auth.models import User
-from django.shortcuts import get_object_or_404
-from .serializers import DocSerializer
-from rest_framework import viewsets
-from rest_framework.response import Response
-from rest_framework import generics
-from django.db.models import F
+from rest_framework.generics import ListAPIView, RetrieveAPIView
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
 from .models import Doc
+from .serializers import DocListSerializer, DocDetailSerializer
 
-
-class DocViewSet(viewsets.ModelViewSet):
+class DocListView(ListAPIView):
     queryset = Doc.objects.all()
-    serializer_class = DocSerializer
+    serializer_class = DocListSerializer
+    permission_classes = [IsAuthenticated]
+
+class DocDetailView(RetrieveAPIView):
+    queryset = Doc.objects.all()
+    serializer_class = DocDetailSerializer
+    permission_classes = [IsAuthenticated]
