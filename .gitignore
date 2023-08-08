@@ -1,5 +1,6 @@
 # Python/Django specific files and directories
 __pycache__/
+*/__pycache__/
 *.pyc
 *.pyo
 *.pyd

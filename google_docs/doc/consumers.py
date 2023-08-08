@@ -23,18 +23,16 @@ class DocConsumer(AsyncWebsocketConsumer):
     async def receive(self, text_data):
         text_data_json = json.loads(text_data)
         change = text_data_json["change"]
-        version = text_data_json["version"]  # Get the version from the received data
 
         # Send change to room group
         await self.channel_layer.group_send(
-            self.room_group_name, {"type": "doc_change", "change": change, "user_id": self.user_id, "version": version}
+            self.room_group_name, {"type": "doc_change", "change": change, "user_id": self.user_id}
         )
 
     # Receive change from room group
     async def doc_change(self, event):
         change = event["change"]
         user_id = event.get("user_id")
-        version = event.get("version")  # Get the version from the event data
 
         # Send change to WebSocket
-        await self.send(text_data=json.dumps({"change": change, "user_id": user_id, "version": version}))
+        await self.send(text_data=json.dumps({"change": change, "user_id": user_id}))
