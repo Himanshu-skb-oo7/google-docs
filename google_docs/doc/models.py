@@ -13,7 +13,7 @@ class Doc(models.Model):
     content = models.TextField(null=True)
     title = models.CharField(max_length=120, null=False)
     owner = models.ForeignKey(user_models.CustomUser, on_delete=models.CASCADE, null=True)
-    shared_with = models.ManyToManyField(user_models.CustomUser, related_name='shared_docs', null=True)
+    shared_with = models.ManyToManyField(user_models.CustomUser, related_name='shared_docs', null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
